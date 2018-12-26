@@ -1,0 +1,15 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "env": {
+    "es6": true
+  },
+  "rules": {
+    "keyword-spacing": ["error"],
+    "max-lines": ["error", 400],
+    "max-lines-per-function": ["error", 40],
+    "no-unused-vars": ["error", { "vars": "all", "args": "none", "ignoreRestSiblings": false }],
+    "semi": ["error", "always"]
+  }
+}
