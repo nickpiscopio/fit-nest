@@ -1,0 +1,12 @@
+{
+  "NAV": {
+    "CHALLENGE": "Challenge",
+    "LOGOUT": "LOGOUT"
+  },
+  "CHALLENGE": {
+    "TITLE": "Challenges"
+  },
+  "SETTINGS": {
+    "TITLE": "Settings"
+  }
+}
