@@ -25,6 +25,8 @@ import { SettingsComponent } from './fragment/content/settings/settings.componen
 import { ChallengeComponent } from './fragment/content/challenge/challenge.component';
 import { LoginComponent } from './fragment/content/login/login.component';
 import { DialogComponent } from './module/dialog/dialog.component';
+import { AuthService } from './services/google/auth.service';
+import { AuthGuard } from './services/google/auth.util';
 
 const translateConfig = {
   loader: {
@@ -57,7 +59,10 @@ const translateConfig = {
     MatMenuModule,
     MatProgressSpinnerModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  entryComponents: [
+    DialogComponent
+  ],
+  providers: [ AuthService, AuthGuard ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

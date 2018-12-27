@@ -7,7 +7,8 @@
     "ERROR": {
       "TITLE": "Unable to login",
       "MESSAGE": "You don't have access to login to Fit Nest."
-    }
+    },
+    "BUTTON": "LOGIN WITH GOOGLE"
   },
   "CHALLENGE": {
     "TITLE": "Challenges"

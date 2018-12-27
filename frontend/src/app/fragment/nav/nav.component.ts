@@ -28,6 +28,6 @@ export class NavComponent {
   }
 
   getUserProfileImage() {
-    return AuthService.getUserImageUrl();
+    return AuthService.getUserImage();
   }
 }

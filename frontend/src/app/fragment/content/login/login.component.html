@@ -4,7 +4,17 @@
   <div class="row">
     <div class="center col-sm-12 col-md-8 col-lg-5">
 
+      <mat-card class="no-left-padding no-right-padding no-top-padding">
+        <mat-card-content>
+          <div class="col no-left-padding no-right-padding">
+            <img src="../../../../assets/images/fit_nest_icon_full.svg">
+          </div>
+        </mat-card-content>
 
+        <mat-card-actions>
+          <button [id]="getLoginButtonId()" mat-raised-button color="primary">{{'LOGIN.BUTTON' | translate}}</button>
+        </mat-card-actions>
+      </mat-card>
 
     </div>
   </div>

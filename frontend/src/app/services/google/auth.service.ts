@@ -14,7 +14,6 @@ export class AuthService {
   private static readonly GOOGLE_IMAGE = 'image';
   private static readonly GOOGLE_NAME = 'name';
   private static readonly GOOGLE_EMAIL = 'email';
-  private static readonly GOOGLE_USER_IMAGE_URL = 'image_url';
   private static readonly GOOGLE_USER_TYPE = 'user_type';
 
   private userDetails;
@@ -30,8 +29,8 @@ export class AuthService {
     return localStorage.getItem(AuthService.GOOGLE_TOKEN);
   }
 
-  public static getUserImageUrl() {
-    return localStorage.getItem(AuthService.GOOGLE_USER_IMAGE_URL);
+  public static getUserImage() {
+    return localStorage.getItem(AuthService.GOOGLE_IMAGE);
   }
 
   private static getUserType() {
