@@ -21,8 +21,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './fragment/nav/nav.component';
-import { SettingsComponent } from './content/settings/settings.component';
-import { ChallengeComponent } from './content/challenge/challenge.component';
+import { SettingsComponent } from './fragment/content/settings/settings.component';
+import { ChallengeComponent } from './fragment/content/challenge/challenge.component';
+import { LoginComponent } from './fragment/content/login/login.component';
+import { DialogComponent } from './module/dialog/dialog.component';
 
 const translateConfig = {
   loader: {
@@ -37,7 +39,9 @@ const translateConfig = {
     AppComponent,
     NavComponent,
     SettingsComponent,
-    ChallengeComponent
+    ChallengeComponent,
+    LoginComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

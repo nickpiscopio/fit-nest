@@ -3,10 +3,19 @@
     "CHALLENGE": "Challenge",
     "LOGOUT": "LOGOUT"
   },
+  "LOGIN": {
+    "ERROR": {
+      "TITLE": "Unable to login",
+      "MESSAGE": "You don't have access to login to Fit Nest."
+    }
+  },
   "CHALLENGE": {
     "TITLE": "Challenges"
   },
   "SETTINGS": {
     "TITLE": "Settings"
+  },
+  "DIALOG": {
+    "OK": "OK"
   }
 }

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Route } from '../../constants/route.constant';
+import { AuthService } from '../../services/google/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -12,6 +13,12 @@ export class NavComponent {
 
   constructor(private router: Router) { }
 
+  logout() {
+    localStorage.clear();
+
+    this.router.navigate([Route.LOGIN]);
+  }
+
   getChallengeRoute() {
     return Route.ROOT + Route.CHALLENGE;
   }
@@ -21,17 +28,6 @@ export class NavComponent {
   }
 
   getUserProfileImage() {
-    return '';
-  }
-
-  showAdminIcon() {
-    return true;
-    // return AuthService.isUserAdmin() || AuthService.isUserRootAdmin();
-  }
-
-  logout() {
-    localStorage.clear();
-
-    this.router.navigate([Route.LOGIN]);
+    return AuthService.getUserImageUrl();
   }
 }

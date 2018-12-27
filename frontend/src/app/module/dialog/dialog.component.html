@@ -1,0 +1,8 @@
+<div>
+  <h2 mat-dialog-title>{{ dialog.titleKey | translate }}</h2>
+  <mat-dialog-content *ngIf="showMessage()">{{ dialog.messageKey | translate }}</mat-dialog-content>
+  <mat-dialog-actions class="right">
+    <button *ngIf="showNegativeButton()" mat-button mat-dialog-close>{{ dialog.negativeButtonKey | translate }}</button>
+    <button *ngIf="showPositiveButton()" mat-button mat-dialog-close>{{ dialog.positiveButtonKey | translate }}</button>
+  </mat-dialog-actions>
+</div>

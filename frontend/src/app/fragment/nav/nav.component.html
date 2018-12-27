@@ -7,7 +7,7 @@
 
   <span *ngIf="showNavButtons">
     <button mat-button [routerLink]="getChallengeRoute()">{{'NAV.CHALLENGE' | translate}}</button>
-    <button id="btn-admin" mat-button  *ngIf="showAdminIcon()" [routerLink]="getSettingsRoute()"><mat-icon id="icon-main">settings</mat-icon></button>
+    <button id="btn-admin" mat-button [routerLink]="getSettingsRoute()"><mat-icon id="icon-main">settings</mat-icon></button>
     <button id="btn-user" mat-button [matMenuTriggerFor]="userMenu"><img src="{{getUserProfileImage()}}"><mat-icon>arrow_drop_down</mat-icon></button>
   </span>
 </nav>
