@@ -2,13 +2,16 @@ import { UserDatabaseColumns } from '../constants/authorization-columns.constant
 import { Encrypt } from '../util/encrypt.util';
 
 export class User {
-  name: string;
-  oldEmail: string;
   private email: string;
+
+  oldEmail: string;
+  name: string;
+  userGroup: string;
 
   setConfigurationFromJson(json: any): void {
     this.name = json[UserDatabaseColumns.NAME];
     this.email = json[UserDatabaseColumns.EMAIL];
+    this.userGroup = json[UserDatabaseColumns.USER_GROUP];
   }
 
   setEmail(email: string): void {

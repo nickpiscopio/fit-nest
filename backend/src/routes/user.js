@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const user = require('./implementation/user');
+
+router.post('/', user.getAuthorizedUsers);
+router.delete('/authorize', user.removeAuthorizationForUser);
+router.post('/authorize', user.authorizeUser);
+router.put('/authorize', user.editUser);
+router.post('/authorize/verify', user.verifyUser);
 
 module.exports = router;

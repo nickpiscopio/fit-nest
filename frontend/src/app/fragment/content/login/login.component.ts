@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Params } from '@angular/router';
+import { UserDatabaseColumns } from '../../../constants/authorization-columns.constant';
 import { Route } from '../../../constants/route.constant';
 import { Dialog } from '../../../models/dialog.model';
 import { User } from '../../../models/user.model';
@@ -77,7 +78,10 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
         return this.changeUrlToLoginError();
       }
 
-      this._googleAuth.storeUserInformation(data.userType,() => {
+      const resultIndex = 0;
+      let results = data[resultIndex];
+      let userGroup = results[UserDatabaseColumns.USER_GROUP];
+      this._googleAuth.storeUserInformation(userGroup, () => {
         this.changeUrlToApplication();
       });
     });

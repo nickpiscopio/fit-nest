@@ -14,14 +14,14 @@ export class AuthService {
   private static readonly GOOGLE_IMAGE = 'image';
   private static readonly GOOGLE_NAME = 'name';
   private static readonly GOOGLE_EMAIL = 'email';
-  private static readonly GOOGLE_USER_TYPE = 'user_type';
+  private static readonly GOOGLE_USER_GROUP = 'user_group';
 
   private userDetails;
   private email: string;
   private profile;
 
   public static isUserAdmin() {
-    const userType = this.getUserType();
+    const userType = this.getUserGroup();
     return userType === this.USER_TYPE_ADMIN;
   }
 
@@ -33,8 +33,8 @@ export class AuthService {
     return localStorage.getItem(AuthService.GOOGLE_IMAGE);
   }
 
-  private static getUserType() {
-    return localStorage.getItem(AuthService.GOOGLE_USER_TYPE);
+  private static getUserGroup() {
+    return localStorage.getItem(AuthService.GOOGLE_USER_GROUP);
   }
 
   public authenticateUser(callback: Function): void {
@@ -67,12 +67,12 @@ export class AuthService {
     });
   }
 
-  public storeUserInformation(userType: string, callback: Function): void {
+  public storeUserInformation(userGroup: string, callback: Function): void {
     localStorage.setItem(AuthService.GOOGLE_TOKEN, this.userDetails.getAuthResponse().id_token);
     localStorage.setItem(AuthService.GOOGLE_IMAGE, this.profile.getImageUrl());
     localStorage.setItem(AuthService.GOOGLE_NAME, this.profile.getName());
     localStorage.setItem(AuthService.GOOGLE_EMAIL, this.email);
-    localStorage.setItem(AuthService.GOOGLE_USER_TYPE, userType);
+    localStorage.setItem(AuthService.GOOGLE_USER_GROUP, userGroup);
 
     callback();
   }
