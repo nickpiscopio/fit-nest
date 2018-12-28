@@ -7,6 +7,10 @@ export class DateUtil {
     return new DatePipe(DateUtil.getLocale()).transform(DateUtil.getISODate(date), format);
   }
 
+  public static getMillisFromDate(date: number): number {
+    return new Date(date).getTime();
+  }
+
   public static getISODate(date: number): string {
     return new Date(date).toISOString();
   }

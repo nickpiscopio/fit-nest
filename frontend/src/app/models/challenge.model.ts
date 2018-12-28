@@ -9,11 +9,20 @@ export class Challenge {
   activities: String[];
 
   constructor() {
+    this.name = '';
     this.dateStart = new Date().getTime();
     this.dateEnd = new Date().getTime();
   }
 
-  setConfigurationFromJson(json: any): void {
+  setFromObject(challenge: Challenge) {
+    this.id = challenge.id;
+    this.dateStart = challenge.dateStart;
+    this.dateEnd = challenge.dateEnd;
+    this.name = challenge.name;
+    this.activities = challenge.activities;
+  }
+
+  setFromJson(json: any): void {
     this.id = json[ChallengeDatabaseColumns.ID];
     this.dateStart = json[ChallengeDatabaseColumns.DATE_START];
     this.dateEnd = json[ChallengeDatabaseColumns.DATE_END];
@@ -21,11 +30,19 @@ export class Challenge {
     this.activities = json[ChallengeDatabaseColumns.ACTIVITIES]
   }
 
-  getStartDate() {
-    return DateUtil.getDisplayDate(this.dateStart, DateUtil.FORMAT_DATE);
+  setStartDate(date: number): void {
+    this.dateStart = DateUtil.getMillisFromDate(date);
   }
 
-  getEndDate() {
-    return DateUtil.getDisplayDate(this.dateEnd, DateUtil.FORMAT_DATE);
+  setEndDate(date: number): void {
+    this.dateEnd = DateUtil.getMillisFromDate(date);
+  }
+
+  getStartDate(): string {
+    return DateUtil.getISODate(this.dateStart);
+  }
+
+  getEndDate(): string {
+    return DateUtil.getISODate(this.dateEnd);
   }
 }

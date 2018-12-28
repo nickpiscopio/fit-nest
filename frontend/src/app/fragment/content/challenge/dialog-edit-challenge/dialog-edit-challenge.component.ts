@@ -1,15 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
-import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { ChallengeAction } from '../../../../enums/challenge.enum';
 import { Challenge } from '../../../../models/challenge.model';
 import { Route } from '../../../../constants/route.constant';
 import { Communication } from '../../../../util/communication.util';
 import { Log } from '../../../../util/log.util';
-
-const FIELD_NAME = 'name';
-const FIELD_EMAIL = 'email';
 
 @Component({
   selector: 'app-dialog-edit-challenge',
@@ -41,7 +38,6 @@ export class DialogEditChallengeComponent {
 
     this.addFormValidation();
     this.setChallenge(data.index, data.challenge);
-    this.setChallengeForm();
   }
 
   addFormValidation(): void {
@@ -69,7 +65,7 @@ export class DialogEditChallengeComponent {
       this.error = false;
       this.loading = true;
 
-      this.setChallengeFromForm();
+      this.setChallengeFromTemp();
 
       this.getSubscriptionType(action, (success, message) => {
         this.loading = false;
@@ -85,19 +81,21 @@ export class DialogEditChallengeComponent {
   }
 
   getSubscriptionType(action: ChallengeAction, callback: Function): void {
+    console.log("challenge: ", this.challenge);
+    console.log("action: ", action);
     switch (action) {
       case ChallengeAction.REMOVE:
-        this.communication.delete(Route.API_USER_AUTHORIZE, this.challenge, (success, message, data) => {
+        this.communication.delete(Route.API_CHALLENGE, this.challenge, (success, message, data) => {
           callback(success, message);
         });
         break;
       case ChallengeAction.EDIT:
-        this.communication.put(Route.API_USER_AUTHORIZE, this.challenge, (success, message, data) => {
+        this.communication.put(Route.API_CHALLENGE, this.challenge, (success, message, data) => {
           callback(success, message);
         });
         break;
       case ChallengeAction.ADD:
-        this.communication.post(Route.API_USER_AUTHORIZE, this.challenge, (success, message, data) => {
+        this.communication.post(Route.API_CHALLENGE, this.challenge, (success, message, data) => {
           callback(success, message);
         });
         break;
@@ -106,9 +104,8 @@ export class DialogEditChallengeComponent {
     }
   }
 
-  setChallengeFromForm(): void {
-    this.challenge.name = this.getNameField().value;
-    // this.challenge.setEmail(this.getEmailField().value);
+  setChallengeFromTemp(): void {
+    this.challenge = this.tempChallenge;
   }
 
   setChallenge(index: number, challenge: Challenge): void {
@@ -118,11 +115,12 @@ export class DialogEditChallengeComponent {
     if (!this.hasChallenge()) {
       this.challenge = new Challenge();
     }
+
+    this.setTempChallengeFromChallenge();
   }
 
-  setChallengeForm(): void {
-    this.getNameField().setValue(this.challenge.name);
-    // this.getEmailField().setValue(this.challenge.getEmail());
+  setTempChallengeFromChallenge() {
+    this.tempChallenge.setFromObject(this.challenge);
   }
 
   closeDialog(): void {
@@ -134,6 +132,7 @@ export class DialogEditChallengeComponent {
   }
 
   hasChallenge(): boolean {
+    console.log("challenge: ", this.challenge);
     return this.challenge !== undefined &&
            this.challenge !== null &&
            this.challenge.name !== undefined &&
@@ -141,11 +140,27 @@ export class DialogEditChallengeComponent {
            this.challenge.name.trim() !== '';
   }
 
-  getNameField(): AbstractControl {
-    return this.challengeForm.get(FIELD_NAME);
+  getName(): string {
+    return this.tempChallenge.name;
   }
 
-  getEmailField(): AbstractControl {
-    return this.challengeForm.get(FIELD_EMAIL);
+  setName(name: string): void {
+    this.tempChallenge.name = name;
+  }
+
+  setStartDate(date: number): void {
+    this.tempChallenge.setStartDate(date);
+  }
+
+  setEndDate(date: number): void {
+    this.tempChallenge.setEndDate(date);
+  }
+
+  getStartDate() {
+    return this.tempChallenge.getStartDate();
+  }
+
+  getEndDate() {
+    return this.tempChallenge.getEndDate();
   }
 }

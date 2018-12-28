@@ -102,7 +102,6 @@ function checkUserAuthorization(email, callback) {
 
 function authorizeUserImplementation(res, name, email, userGroup) {
   const insertUserQuery = "insert into users (name, email, user_group) values ('" + name + "','" + email + "','" + userGroup + "');";
-  console.log("insert: ", insertUserQuery);
   new Database().execute(insertUserQuery, (hasError, results) => {
     if (hasError) {
       res.statusCode = statusCodes.ERROR;

@@ -51,7 +51,7 @@ export class ChallengeComponent {
         if (data.hasOwnProperty(index)) {
           const jsonConfig = data[index];
           const challenge = new Challenge();
-          challenge.setConfigurationFromJson(jsonConfig);
+          challenge.setFromJson(jsonConfig);
 
           this.addChallenge(challenge);
         }

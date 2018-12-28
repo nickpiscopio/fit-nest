@@ -4,6 +4,7 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
+let challengeRouter = require('./src/routes/challenge');
 let userRouter = require('./src/routes/user');
 
 let app = express();
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(allowCrossDomain);
 
 // Routes.
+app.use('/challenge', challengeRouter);
 app.use('/user', userRouter);
 
 // Catch 404 and forward to error handler.
