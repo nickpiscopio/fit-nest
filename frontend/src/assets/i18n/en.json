@@ -11,12 +11,21 @@
     "BUTTON": "LOGIN WITH GOOGLE"
   },
   "CHALLENGE": {
-    "TITLE": "Challenges"
+    "TITLE": "Challenges",
+    "ADD": "Add Challenge",
+    "EDIT": "Edit Challenge",
+    "NAME": "Name",
+    "NAME_REQUIRED": "A name for the challenge is required",
+    "START_DATE": "Challenge start date",
+    "END_DATE": "Challenge end date",
+    "SAVE_ERROR": "Error saving the challenge"
   },
   "SETTINGS": {
     "TITLE": "Settings"
   },
   "DIALOG": {
+    "DELETE": "DELETE",
+    "SAVE": "SAVE",
     "OK": "OK"
   }
 }

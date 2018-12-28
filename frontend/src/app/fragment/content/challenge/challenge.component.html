@@ -1,3 +1,21 @@
 <app-nav></app-nav>
 
-<h1>{{'CHALLENGE.TITLE' | translate}}</h1>
+<div class="container">
+  <div class="row">
+    <div class="col align-items-baseline">
+      <h3>{{'CHALLENGE.TITLE' | translate}}</h3>
+    </div>
+
+    <div *ngIf="isAllowedToAddChallenge()" class="d-flex justify-content-end">
+      <button mat-raised-button
+              color="primary"
+              (click)="openDialogToAddChallenge(null, null)"><mat-icon>add</mat-icon>{{'CHALLENGE.ADD' | translate}}</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <!-- TODO: FOR THE LIST OF CHALLENGES LATER-->
+    </div>
+  </div>
+</div>
