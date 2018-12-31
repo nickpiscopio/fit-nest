@@ -5,8 +5,8 @@ const responseMessage = require('../../util/response-message');
 const Database = require('../../database/database');
 
 function getChallenges(req, res) {
-  let query = req.body.query;
-  let challengeQuery = "select * from challenege where name like '%" + query + "%'";
+  let query = req.query.query;
+  let challengeQuery = "select * from challenge where name like '%" + query + "%'";
   new Database().execute(challengeQuery, (error, results) => {
     if (error) {
       res.statusCode = statusCodes.ERROR;
@@ -21,8 +21,8 @@ function deleteChallenge(req, res) {
   let challengeRequest = req.body;
   let challengeId = challengeRequest.id;
 
-  const deleteUserQuery = "delete from challenge where id=" + challengeId + ";";
-  new Database().execute(deleteUserQuery, (hasError, results) => {
+  const deleteQuery = "delete from challenge where id='" + challengeId + "';";
+  new Database().execute(deleteQuery, (hasError, results) => {
     if (hasError) {
       res.statusCode = statusCodes.ERROR;
       return res.send({message: responseMessage.getFailedMessage('Error deleting challenge.'), error: results });

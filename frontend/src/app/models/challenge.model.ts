@@ -24,8 +24,8 @@ export class Challenge {
 
   setFromJson(json: any): void {
     this.id = json[ChallengeDatabaseColumns.ID];
-    this.dateStart = json[ChallengeDatabaseColumns.DATE_START];
-    this.dateEnd = json[ChallengeDatabaseColumns.DATE_END];
+    this.dateStart = Number(json[ChallengeDatabaseColumns.DATE_START]);
+    this.dateEnd = Number(json[ChallengeDatabaseColumns.DATE_END]);
     this.name = json[ChallengeDatabaseColumns.NAME];
     this.activities = json[ChallengeDatabaseColumns.ACTIVITIES]
   }

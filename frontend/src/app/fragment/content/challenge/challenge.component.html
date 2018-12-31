@@ -14,8 +14,8 @@
   </div>
 
   <div class="row">
-    <div class="col">
-      <!-- TODO: FOR THE LIST OF CHALLENGES LATER-->
+    <div class="col-12" *ngFor="let challenge of challenges; let i = index">
+      <app-challenge-list-item [challenge]="challenge" (click)="openDialogToAddChallenge(i, challenge)"></app-challenge-list-item>
     </div>
   </div>
 </div>

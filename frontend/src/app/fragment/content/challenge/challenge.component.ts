@@ -36,11 +36,10 @@ export class ChallengeComponent {
 
   getChallenges(): void {
     // TODO: NEED TO IMPLEMENT A REAL SEARCH IN THE UI.
-    const body = {
-      query: ''
-    };
+    const query = '';
+    const url = Route.API_CHALLENGE + '?query=' + query;
 
-    this.communication.post(Route.API_USER, body, (success, message, data) => {
+    this.communication.get(url, (success, message, data) => {
       if (!success) {
         return Log.error(message);
       }

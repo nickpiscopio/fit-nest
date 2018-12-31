@@ -32,6 +32,7 @@ import { DialogComponent } from './module/dialog/dialog.component';
 import { ProgressComponent } from './module/progress/progress.component';
 import { AuthService } from './services/google/auth.service';
 import { AuthGuard } from './services/google/auth.util';
+import { ChallengeListItemComponent } from './fragment/content/challenge/challenge-list-item/challenge-list-item.component';
 
 const translateConfig = {
   loader: {
@@ -50,7 +51,8 @@ const translateConfig = {
     LoginComponent,
     DialogEditChallengeComponent,
     DialogComponent,
-    ProgressComponent
+    ProgressComponent,
+    ChallengeListItemComponent
   ],
   imports: [
     BrowserModule,

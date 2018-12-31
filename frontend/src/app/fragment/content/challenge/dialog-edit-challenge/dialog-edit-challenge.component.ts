@@ -34,17 +34,15 @@ export class DialogEditChallengeComponent {
               private dialogRef: MatDialogRef<DialogEditChallengeComponent>) {
     this.communication = new Communication(_http);
 
-    this.tempChallenge = new Challenge();
-
     this.addFormValidation();
     this.setChallenge(data.index, data.challenge);
   }
 
   addFormValidation(): void {
     this.challengeForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      dateStart: ['', Validators.required],
-      dateEnd: ['', Validators.required]
+      name: ['', Validators.minLength(1)],
+      dateStart: ['', Validators.minLength(1)],
+      dateEnd: ['', Validators.minLength(1)]
     });
   }
 
@@ -81,8 +79,6 @@ export class DialogEditChallengeComponent {
   }
 
   getSubscriptionType(action: ChallengeAction, callback: Function): void {
-    console.log("challenge: ", this.challenge);
-    console.log("action: ", action);
     switch (action) {
       case ChallengeAction.REMOVE:
         this.communication.delete(Route.API_CHALLENGE, this.challenge, (success, message, data) => {
@@ -120,6 +116,7 @@ export class DialogEditChallengeComponent {
   }
 
   setTempChallengeFromChallenge() {
+    this.tempChallenge = new Challenge();
     this.tempChallenge.setFromObject(this.challenge);
   }
 
@@ -132,7 +129,6 @@ export class DialogEditChallengeComponent {
   }
 
   hasChallenge(): boolean {
-    console.log("challenge: ", this.challenge);
     return this.challenge !== undefined &&
            this.challenge !== null &&
            this.challenge.name !== undefined &&
