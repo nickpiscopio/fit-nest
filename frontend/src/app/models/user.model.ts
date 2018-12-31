@@ -8,7 +8,7 @@ export class User {
   name: string;
   userGroup: string;
 
-  setConfigurationFromJson(json: any): void {
+  setFromJson(json: any): void {
     this.name = json[UserDatabaseColumns.NAME];
     this.email = json[UserDatabaseColumns.EMAIL];
     this.userGroup = json[UserDatabaseColumns.USER_GROUP];
