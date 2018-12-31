@@ -14,7 +14,8 @@ import { DialogEditChallengeComponent } from './dialog-edit-challenge/dialog-edi
   styleUrls: ['./challenge.component.sass']
 })
 export class ChallengeComponent {
-  challenges: Challenge[];
+  activeChallenges: Challenge[];
+  inactiveChallenges: Challenge[];
 
   private communication: Communication;
 
@@ -58,15 +59,24 @@ export class ChallengeComponent {
     });
   }
 
-  addChallenge(challenge: Challenge): void {
-    this.challenges.push(challenge);
+  addChallenge(challenge: Challenge): number {
+    if (challenge.isActive()) {
+      return this.activeChallenges.push(challenge);
+    }
+
+    return this.inactiveChallenges.push(challenge);
   }
 
   resetChallenges(): void {
-    this.challenges = [];
+    this.activeChallenges = [];
+    this.inactiveChallenges = [];
   }
 
-  isAllowedToAddChallenge() {
+  isAllowedToAddChallenge(): boolean {
     return AuthService.isUserAdmin();
+  }
+
+  hasInactiveChallenges(): boolean {
+    return this.inactiveChallenges !== undefined && this.inactiveChallenges.length > 0;
   }
 }

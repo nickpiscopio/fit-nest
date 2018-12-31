@@ -11,7 +11,10 @@
     "BUTTON": "LOGIN WITH GOOGLE"
   },
   "CHALLENGE": {
-    "TITLE": "Challenges",
+    "TITLE": {
+      "ACTIVE": "Challenges",
+      "INACTIVE": "Past Challenges"
+    },
     "ADD": "Add Challenge",
     "EDIT": "Edit Challenge",
     "NAME": "Name",

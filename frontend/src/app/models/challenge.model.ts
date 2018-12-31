@@ -53,4 +53,8 @@ export class Challenge {
   getHumanReadableEndDate(): string {
     return DateUtil.getDisplayDate(this.dateEnd, DateUtil.FORMAT_DATE);
   }
+
+  isActive(): boolean {
+    return this.dateEnd > new Date().getTime();
+  }
 }

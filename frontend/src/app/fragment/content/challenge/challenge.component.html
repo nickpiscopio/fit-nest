@@ -1,9 +1,9 @@
 <app-nav></app-nav>
 
 <div class="container">
-  <div class="row">
+  <div id="wrapper-challenge-title" class="row">
     <div class="col align-items-baseline">
-      <h3>{{'CHALLENGE.TITLE' | translate}}</h3>
+      <h3>{{'CHALLENGE.TITLE.ACTIVE' | translate}}</h3>
     </div>
 
     <div *ngIf="isAllowedToAddChallenge()" class="d-flex justify-content-end">
@@ -14,8 +14,28 @@
   </div>
 
   <div class="row">
-    <div class="col-12" *ngFor="let challenge of challenges; let i = index">
-      <app-challenge-list-item [challenge]="challenge" (click)="openDialogToAddChallenge(i, challenge)"></app-challenge-list-item>
+    <div class="col">
+      <mat-card>
+        <div *ngFor="let challenge of activeChallenges; let i = index">
+          <app-challenge-list-item [challenge]="challenge" (click)="openDialogToAddChallenge(i, challenge)"></app-challenge-list-item>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <div *ngIf="hasInactiveChallenges()">
+    <div class="row">
+      <h6 class="col">{{'CHALLENGE.TITLE.INACTIVE' | translate}}</h6>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <mat-card>
+          <div *ngFor="let challenge of inactiveChallenges; let i = index">
+            <app-challenge-list-item [challenge]="challenge" (click)="openDialogToAddChallenge(i, challenge)"></app-challenge-list-item>
+          </div>
+        </mat-card>
+      </div>
     </div>
   </div>
 </div>
