@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatNativeDateModule } from '@angular/material';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRippleModule } from '@angular/material/core';
 
 // App components.
 import { AppRoutingModule } from './app-routing.module';
@@ -70,7 +71,8 @@ const translateConfig = {
     MatInputModule,
     MatMenuModule,
     MatNativeDateModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatRippleModule
   ],
   entryComponents: [
     DialogEditChallengeComponent,

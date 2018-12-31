@@ -1,5 +1,8 @@
-<mat-card>
+<mat-card class="action-card" matRipple>
   <p>{{challenge.name}}</p>
-  <p>{{challenge.getHumanReadableStartDate()}}</p>
-  <p>{{challenge.getHumanReadableEndDate()}}</p>
+  <div id="dates" class="right">
+    <p>{{challenge.getHumanReadableStartDate()}}</p>
+    <p>–</p>
+    <p>{{challenge.getHumanReadableEndDate()}}</p>
+  </div>
 </mat-card>
