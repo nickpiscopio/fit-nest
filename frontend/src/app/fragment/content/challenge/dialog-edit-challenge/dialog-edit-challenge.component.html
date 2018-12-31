@@ -28,6 +28,7 @@
 
   <mat-dialog-actions class="float-right">
     <button mat-button
+            *ngIf="hasChallenge()"
             (click)="deleteChallenge()">{{'DIALOG.DELETE' | translate}}</button>
     <button mat-button
             (click)="saveChallenge()">{{'DIALOG.SAVE' | translate}}</button>
