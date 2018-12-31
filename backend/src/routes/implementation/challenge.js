@@ -6,7 +6,7 @@ const Database = require('../../database/database');
 
 function getChallenges(req, res) {
   let query = req.query.query;
-  let challengeQuery = "select * from challenge where name like '%" + query + "%'";
+  let challengeQuery = "select * from challenge where name like '%" + query + "%' order by date_end desc";
   new Database().execute(challengeQuery, (error, results) => {
     if (error) {
       res.statusCode = statusCodes.ERROR;

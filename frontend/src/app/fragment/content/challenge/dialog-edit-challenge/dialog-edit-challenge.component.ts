@@ -153,10 +153,10 @@ export class DialogEditChallengeComponent {
   }
 
   getStartDate() {
-    return this.tempChallenge.getStartDate();
+    return this.tempChallenge.getStartDateTimeStamp();
   }
 
   getEndDate() {
-    return this.tempChallenge.getEndDate();
+    return this.tempChallenge.getEndDateTimeStamp();
   }
 }

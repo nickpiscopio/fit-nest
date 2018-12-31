@@ -38,11 +38,19 @@ export class Challenge {
     this.dateEnd = DateUtil.getMillisFromDate(date);
   }
 
-  getStartDate(): string {
+  getStartDateTimeStamp(): string {
     return DateUtil.getISODate(this.dateStart);
   }
 
-  getEndDate(): string {
+  getEndDateTimeStamp(): string {
     return DateUtil.getISODate(this.dateEnd);
+  }
+
+  getHumanReadableStartDate(): string {
+    return DateUtil.getDisplayDate(this.dateStart, DateUtil.FORMAT_DATE);
+  }
+
+  getHumanReadableEndDate(): string {
+    return DateUtil.getDisplayDate(this.dateEnd, DateUtil.FORMAT_DATE);
   }
 }

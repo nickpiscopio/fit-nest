@@ -1,1 +1,5 @@
-<mat-card>{{challenge.name}}</mat-card>
+<mat-card>
+  <p>{{challenge.name}}</p>
+  <p>{{challenge.getHumanReadableStartDate()}}</p>
+  <p>{{challenge.getHumanReadableEndDate()}}</p>
+</mat-card>
