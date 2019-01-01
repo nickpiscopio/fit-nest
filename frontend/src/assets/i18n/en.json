@@ -24,11 +24,26 @@
     "SAVE_ERROR": "Error saving the challenge"
   },
   "SETTINGS": {
-    "TITLE": "Settings"
+    "TITLE": "Settings",
+    "AUTHORIZATION": {
+      "TITLE": "Authorization",
+      "ADD": "Add User",
+      "EDIT": "Add User",
+      "SAVE_ERROR": "An error occurred while saving the user",
+      "USER": {
+        "NAME": "Name",
+        "NAME_REQUIRED": "A name is required",
+        "EMAIL": "Email",
+        "EMAIL_REQUIRED": "An email is required",
+        "GROUP": "Group",
+        "GROUP_REQUIRED": "A user group is required"
+      }
+    }
   },
   "DIALOG": {
-    "DELETE": "DELETE",
-    "SAVE": "SAVE",
+    "REMOVE": "Remove",
+    "DELETE": "Delete",
+    "SAVE": "Save",
     "OK": "OK"
   }
 }

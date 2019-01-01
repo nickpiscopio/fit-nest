@@ -1,0 +1,37 @@
+<form [formGroup]="userForm">
+  <div class="layout">
+    <h4>{{getDialogTitleKey() | translate}}</h4>
+    <div id="progress">
+      <app-progress [showProgress]="loading"></app-progress>
+    </div>
+  </div>
+  <p *ngIf="error" class="error transition">{{'SETTINGS.AUTHORIZATION.SAVE_ERROR' | translate}}</p>
+
+  <mat-form-field>
+    <input matInput placeholder="{{'SETTINGS.AUTHORIZATION.USER.NAME' | translate}}" (change)="setName($event.currentTarget.value)" [ngModel]="getName()" formControlName="name">
+    <mat-error>{{'SETTINGS.AUTHORIZATION.USER.NAME_REQUIRED' | translate}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="{{'SETTINGS.AUTHORIZATION.USER.EMAIL' | translate}}" (change)="setEmail($event.currentTarget.value)" [ngModel]="getEmail()" formControlName="email">
+    <mat-error>{{'SETTINGS.AUTHORIZATION.USER.EMAIL_REQUIRED' | translate}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="{{'SETTINGS.AUTHORIZATION.USER.GROUP' | translate}}" (selectionChange)="setUserGroup($event.value)" [ngModel]="getUserGroup()"
+                formControlName="userGroup">
+      <mat-option *ngFor="let group of getUserGroups()" [value]="group">
+        {{group}}
+      </mat-option>
+    </mat-select>
+    <mat-error>{{'SETTINGS.AUTHORIZATION.USER.GROUP_REQUIRED' | translate}}</mat-error>
+  </mat-form-field>
+
+  <mat-dialog-actions class="float-right">
+    <button mat-button
+            *ngIf="hasUser()"
+            (click)="removeUser()">{{'DIALOG.REMOVE' | translate}}</button>
+    <button mat-button
+            (click)="saveUser()">{{'DIALOG.SAVE' | translate}}</button>
+  </mat-dialog-actions>
+</form>

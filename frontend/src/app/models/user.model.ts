@@ -8,9 +8,20 @@ export class User {
   name: string;
   userGroup: string;
 
+  constructor() {
+    this.name = '';
+  }
+
+  setFromObject(user: User): void {
+    this.email = user.email;
+    this.oldEmail = user.oldEmail;
+    this.name = user.name;
+    this.userGroup = user.userGroup;
+  }
+
   setFromJson(json: any): void {
-    this.name = json[UserDatabaseColumns.NAME];
     this.email = json[UserDatabaseColumns.EMAIL];
+    this.name = json[UserDatabaseColumns.NAME];
     this.userGroup = json[UserDatabaseColumns.USER_GROUP];
   }
 

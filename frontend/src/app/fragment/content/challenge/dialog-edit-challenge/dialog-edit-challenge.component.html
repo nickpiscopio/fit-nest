@@ -7,21 +7,19 @@
   </div>
   <p *ngIf="error" class="error transition">{{'CHALLENGE.SAVE_ERROR' | translate}}</p>
 
-  <div>
-    <mat-form-field>
-      <input matInput placeholder="{{'CHALLENGE.NAME' | translate}}" (change)="setName($event.currentTarget.value)" [value]="getName()" formControlName="name">
-      <mat-error>{{'CHALLENGE.NAME_REQUIRED' | translate}}</mat-error>
-    </mat-form-field>
-  </div>
+  <mat-form-field>
+    <input matInput placeholder="{{'CHALLENGE.NAME' | translate}}" (change)="setName($event.currentTarget.value)" [ngModel]="getName()" formControlName="name">
+    <mat-error>{{'CHALLENGE.NAME_REQUIRED' | translate}}</mat-error>
+  </mat-form-field>
 
   <mat-form-field>
-    <input matInput [matDatepicker]="dateStart" placeholder="{{'CHALLENGE.START_DATE' | translate}}" [value]="getStartDate()" (dateChange)="setStartDate($event.value)" formControlName="dateStart">
+    <input matInput [matDatepicker]="dateStart" placeholder="{{'CHALLENGE.START_DATE' | translate}}" [ngModel]="getStartDate()" (dateChange)="setStartDate($event.value)" formControlName="dateStart">
     <mat-datepicker-toggle matSuffix [for]="dateStart"></mat-datepicker-toggle>
     <mat-datepicker #dateStart></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput [matDatepicker]="dateEnd" placeholder="{{'CHALLENGE.END_DATE' | translate}}" [value]="getEndDate()" (dateChange)="setEndDate($event.value)"formControlName="dateEnd">
+    <input matInput [matDatepicker]="dateEnd" placeholder="{{'CHALLENGE.END_DATE' | translate}}" [ngModel]="getEndDate()" (dateChange)="setEndDate($event.value)" formControlName="dateEnd">
     <mat-datepicker-toggle matSuffix [for]="dateEnd"></mat-datepicker-toggle>
     <mat-datepicker #dateEnd></mat-datepicker>
   </mat-form-field>

@@ -1,0 +1,33 @@
+<mat-card>
+  <table class="table table-striped" [mfData]="dataSource" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+    <tr>
+      <th></th>
+      <th>
+        <mfDefaultSorter by="name">{{'SETTINGS.AUTHORIZATION.USER.NAME' | translate}}</mfDefaultSorter>
+      </th>
+      <th>
+        <mfDefaultSorter by="email">{{'SETTINGS.AUTHORIZATION.USER.EMAIL' | translate}}</mfDefaultSorter>
+      </th>
+      <th>
+        <mfDefaultSorter by="email">{{'SETTINGS.AUTHORIZATION.USER.GROUP' | translate}}</mfDefaultSorter>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of mf.data; let i = index" (click)="editRow(i, user)">
+      <td class="transition"><mat-icon class="icon-edit">edit</mat-icon></td>
+      <td class="transition">{{user.name}}</td>
+      <td class="transition">{{user.getEmail()}}</td>
+      <td class="transition">{{user.userGroup}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="12">
+        <mfBootstrapPaginator></mfBootstrapPaginator>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</mat-card>

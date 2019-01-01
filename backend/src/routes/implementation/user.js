@@ -38,9 +38,9 @@ function authorizeUser(req, res) {
   let userRequest = req.body;
   let name = userRequest.name;
   let userEmail = userRequest.email;
-  let userType = userRequest.userType;
+  let userGroup = userRequest.userGroup;
 
-  authorizeUserImplementation(res, name, userEmail, userType);
+  authorizeUserImplementation(res, name, userEmail, userGroup);
 }
 
 function editUser(req, res) {

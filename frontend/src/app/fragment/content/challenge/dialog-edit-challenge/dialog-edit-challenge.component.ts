@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { ChallengeAction } from '../../../../enums/challenge.enum';
+import { DatabaseAction } from '../../../../enums/database-action.enum';
 import { Challenge } from '../../../../models/challenge.model';
 import { Route } from '../../../../constants/route.constant';
 import { Communication } from '../../../../util/communication.util';
@@ -40,25 +40,25 @@ export class DialogEditChallengeComponent {
 
   addFormValidation(): void {
     this.challengeForm = this.formBuilder.group({
-      name: ['', Validators.minLength(1)],
-      dateStart: ['', Validators.minLength(1)],
-      dateEnd: ['', Validators.minLength(1)]
+      name: ['', Validators.required],
+      dateStart: ['', Validators.required],
+      dateEnd: ['', Validators.required]
     });
   }
 
   deleteChallenge(): void {
-    this.updateChallenge(ChallengeAction.REMOVE);
+    this.updateChallenge(DatabaseAction.REMOVE);
   }
 
   saveChallenge(): void {
     if (this.hasChallenge()) {
-      return this.updateChallenge(ChallengeAction.EDIT);
+      return this.updateChallenge(DatabaseAction.EDIT);
     }
 
-    this.updateChallenge(ChallengeAction.ADD);
+    this.updateChallenge(DatabaseAction.ADD);
   }
 
-  updateChallenge(action: ChallengeAction): void {
+  updateChallenge(action: DatabaseAction): void {
     if (!this.challengeForm.invalid) {
       this.error = false;
       this.loading = true;
@@ -78,19 +78,19 @@ export class DialogEditChallengeComponent {
     }
   }
 
-  getSubscriptionType(action: ChallengeAction, callback: Function): void {
+  getSubscriptionType(action: DatabaseAction, callback: Function): void {
     switch (action) {
-      case ChallengeAction.REMOVE:
+      case DatabaseAction.REMOVE:
         this.communication.delete(Route.API_CHALLENGE, this.challenge, (success, message, data) => {
           callback(success, message);
         });
         break;
-      case ChallengeAction.EDIT:
+      case DatabaseAction.EDIT:
         this.communication.put(Route.API_CHALLENGE, this.challenge, (success, message, data) => {
           callback(success, message);
         });
         break;
-      case ChallengeAction.ADD:
+      case DatabaseAction.ADD:
         this.communication.post(Route.API_CHALLENGE, this.challenge, (success, message, data) => {
           callback(success, message);
         });
@@ -152,11 +152,11 @@ export class DialogEditChallengeComponent {
     this.tempChallenge.setEndDate(date);
   }
 
-  getStartDate() {
+  getStartDate(): string {
     return this.tempChallenge.getStartDateTimeStamp();
   }
 
-  getEndDate() {
+  getEndDate(): string {
     return this.tempChallenge.getEndDateTimeStamp();
   }
 }

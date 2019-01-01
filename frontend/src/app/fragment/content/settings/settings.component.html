@@ -1,3 +1,29 @@
 <app-nav></app-nav>
 
-<h1>{{'SETTINGS.TITLE' | translate}}</h1>
+<div class="container">
+  <div id="wrapper-settings-title" class="row">
+    <div class="col">
+      <h3>{{'SETTINGS.TITLE' | translate}}</h3>
+    </div>
+  </div>
+  <div *ngIf="isAdmin()">
+    <div class="row">
+      <div class="col align-items-baseline">
+        <h6>{{'SETTINGS.AUTHORIZATION.TITLE' | translate}}</h6>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <button mat-raised-button
+                color="primary"
+                (click)="openDialogToEditUser(null, null)"><mat-icon>add</mat-icon>{{'SETTINGS.AUTHORIZATION.ADD' | translate}}</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <app-authorization-table [dataSource]="users"
+                                 (editEvent)="openDialogToEditUser($event.index, $event.data)"></app-authorization-table>
+      </div>
+    </div>
+  </div>
+</div>
