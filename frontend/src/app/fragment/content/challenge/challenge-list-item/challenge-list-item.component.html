@@ -1,9 +1,15 @@
-<div class="li-challenge" matRipple>
-  <button *ngIf="isAbleToEdit()" (click)="editClicked()"><mat-icon class="icon-edit">edit</mat-icon></button>
-  <p>{{challenge.name}}</p>
-  <div id="dates" class="right">
-    <p>{{challenge.getHumanReadableStartDate()}}</p>
-    <p>–</p>
-    <p>{{challenge.getHumanReadableEndDate()}}</p>
+<div>
+  <div class="layout">
+    <button *ngIf="isAbleToEdit()"
+            (click)="adminEditChallengeClicked()"
+            mat-button><mat-icon class="icon-edit">edit</mat-icon></button>
+    <div id="content" class="match-parent layout" (click)="userEditChallengeClicked()" matRipple>
+      <p>{{challenge.name}}</p>
+      <div id="dates" class="match-parent">
+        <p>{{challenge.getHumanReadableStartDate()}}</p>
+        <p>–</p>
+        <p>{{challenge.getHumanReadableEndDate()}}</p>
+      </div>
+    </div>
   </div>
 </div>

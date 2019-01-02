@@ -10,10 +10,15 @@ import { AuthService } from '../../../../services/google/auth.service';
 export class ChallengeListItemComponent {
   @Input() challenge: Challenge;
 
-  @Output() edit = new EventEmitter<Challenge>();
+  @Output() adminEditChallenge = new EventEmitter<Challenge>();
+  @Output() userEditChallenge = new EventEmitter<Challenge>();
 
-  editClicked(): void {
-    this.edit.emit(this.challenge);
+  adminEditChallengeClicked(): void {
+    this.adminEditChallenge.emit(this.challenge);
+  }
+
+  userEditChallengeClicked(): void {
+    this.userEditChallenge.emit(this.challenge);
   }
 
   isAbleToEdit(): boolean {
