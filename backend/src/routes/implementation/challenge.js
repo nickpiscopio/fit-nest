@@ -37,15 +37,16 @@ function insertChallenge(req, res) {
   let name = challengeRequest.name;
   let dateStart = challengeRequest.dateStart;
   let dateEnd = challengeRequest.dateEnd;
+  let activities = getActivitiesArrayString(challengeRequest.activities);
 
-  const insertUserQuery = "insert into challenge (name, date_start, date_end) values ('" + name + "'," + dateStart + "," + dateEnd + ");";
+  const insertUserQuery = "insert into challenge (name, date_start, date_end, activities) values ('" + name + "'," + dateStart + "," + dateEnd + "," + activities + ");";
   new Database().execute(insertUserQuery, (hasError, results) => {
     if (hasError) {
       res.statusCode = statusCodes.ERROR;
-      return res.send({message: responseMessage.getFailedMessage('Error authorizing user.'), error: results });
+      return res.send({message: responseMessage.getFailedMessage('Error inserting challenge.'), error: results });
     }
 
-    return res.send({message: responseMessage.getSuccessMessage('User authorized.'), data: results });
+    return res.send({message: responseMessage.getSuccessMessage('Challenge inserted.'), data: results });
   });
 }
 
@@ -55,16 +56,21 @@ function editChallenge(req, res) {
   let name = challengeRequest.name;
   let dateStart = challengeRequest.dateStart;
   let dateEnd = challengeRequest.dateEnd;
+  let activities = getActivitiesArrayString(challengeRequest.activities);
 
-  const updateUserQuery = "update challenge set name='" + name + "', date_start=" + dateStart + ", date_end=" + dateEnd + " where id=" + id + ";";
+  const updateUserQuery = "update challenge set name='" + name + "', date_start=" + dateStart + ", date_end=" + dateEnd + ", activities=" + activities + " where id=" + id + ";";
   new Database().execute(updateUserQuery, (hasError, results) => {
     if (hasError) {
       res.statusCode = statusCodes.ERROR;
-      return res.send({message: responseMessage.getFailedMessage('Error updating user authorization.'), error: results });
+      return res.send({message: responseMessage.getFailedMessage('Error updating challenge.'), error: results });
     }
 
-    return res.send({message: responseMessage.getSuccessMessage('Updated user authorization.'), error: results });
+    return res.send({message: responseMessage.getSuccessMessage('Updated challenge.'), error: results });
   });
+}
+
+function getActivitiesArrayString(activities) {
+  return 'ARRAY' + JSON.stringify(activities).replace(/"/g,"'");
 }
 
 module.exports = {

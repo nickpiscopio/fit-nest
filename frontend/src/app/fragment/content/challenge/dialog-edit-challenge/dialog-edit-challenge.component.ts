@@ -159,4 +159,8 @@ export class DialogEditChallengeComponent {
   getEndDate(): string {
     return this.tempChallenge.getEndDateTimeStamp();
   }
+
+  getActivityPlaceholderKey() {
+    return 'CHALLENGE.ACTIVITIES';
+  }
 }

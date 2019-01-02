@@ -24,6 +24,9 @@
     <mat-datepicker #dateEnd></mat-datepicker>
   </mat-form-field>
 
+  <app-autocomplete-chips [finalValues]="tempChallenge.activities"
+                          [inputPlaceholderKey]="getActivityPlaceholderKey()"></app-autocomplete-chips>
+
   <mat-dialog-actions class="float-right">
     <button mat-button
             *ngIf="hasChallenge()"

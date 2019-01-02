@@ -12,8 +12,10 @@ import { DataTableModule } from 'angular-6-datatable';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 // Angular UI
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -39,6 +41,7 @@ import { ProgressComponent } from './module/progress/progress.component';
 import { AuthService } from './services/google/auth.service';
 import { AuthGuard } from './services/google/auth.util';
 import { ChallengeListItemComponent } from './fragment/content/challenge/challenge-list-item/challenge-list-item.component';
+import { AutocompleteChipsComponent } from './module/autocomplete-chips/autocomplete-chips.component';
 
 const translateConfig = {
   loader: {
@@ -60,7 +63,8 @@ const translateConfig = {
     DialogEditChallengeComponent,
     DialogComponent,
     ProgressComponent,
-    ChallengeListItemComponent
+    ChallengeListItemComponent,
+    AutocompleteChipsComponent
   ],
   imports: [
     BrowserModule,
@@ -71,8 +75,10 @@ const translateConfig = {
     ReactiveFormsModule,
     DataTableModule,
     TranslateModule.forRoot(translateConfig),
+    MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
     MatDatepickerModule,
     MatDialogModule,
     MatIconModule,

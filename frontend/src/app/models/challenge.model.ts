@@ -6,12 +6,14 @@ export class Challenge {
   dateStart: number;
   dateEnd: number;
   name: string;
-  activities: String[];
+  activities: string[];
 
   constructor() {
     this.name = '';
-    this.dateStart = new Date().getTime();
-    this.dateEnd = new Date().getTime();
+    let now = new Date().getTime();
+    this.setStartDate(now);
+    this.setEndDate(now);
+    this.activities = [];
   }
 
   setFromObject(challenge: Challenge) {
@@ -31,11 +33,11 @@ export class Challenge {
   }
 
   setStartDate(date: number): void {
-    this.dateStart = DateUtil.getMillisFromDate(date);
+    this.dateStart = DateUtil.getStartOfDayInMillisFromDate(date);
   }
 
   setEndDate(date: number): void {
-    this.dateEnd = DateUtil.getMillisFromDate(date);
+    this.dateEnd = DateUtil.getEndOfDayInMillisFromDate(date);
   }
 
   getStartDateTimeStamp(): string {
@@ -55,6 +57,7 @@ export class Challenge {
   }
 
   isActive(): boolean {
-    return this.dateEnd > new Date().getTime();
+    let now = new Date().getTime();
+    return now > this.dateStart && now < this.dateEnd;
   }
 }

@@ -13,7 +13,7 @@
   "CHALLENGE": {
     "TITLE": {
       "ACTIVE": "Challenges",
-      "INACTIVE": "Past Challenges"
+      "INACTIVE": "Inactive Challenges"
     },
     "ADD": "Add Challenge",
     "EDIT": "Edit Challenge",
@@ -21,7 +21,8 @@
     "NAME_REQUIRED": "A name for the challenge is required",
     "START_DATE": "Challenge start date",
     "END_DATE": "Challenge end date",
-    "SAVE_ERROR": "Error saving the challenge"
+    "SAVE_ERROR": "Error saving the challenge",
+    "ACTIVITIES": "Activities"
   },
   "SETTINGS": {
     "TITLE": "Settings",

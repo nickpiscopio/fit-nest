@@ -14,4 +14,5 @@ CREATE TABLE users (name VARCHAR NOT NULL,
 CREATE TABLE challenge (id SERIAL NOT NULL,
                         name VARCHAR NOT NULL,
                         date_start INT NOT NULL,
-                        date_end INT NOT NULL);
+                        date_end INT NOT NULL,
+                        activities STRING[] NOT NULL);
