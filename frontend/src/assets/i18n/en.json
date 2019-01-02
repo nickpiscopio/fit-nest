@@ -24,6 +24,9 @@
     "SAVE_ERROR": "Error saving the challenge",
     "ACTIVITIES": "Activities"
   },
+  "CHALLENGE_USER_EDIT": {
+    "TITLE": "Challenge"
+  },
   "SETTINGS": {
     "TITLE": "Settings",
     "AUTHORIZATION": {

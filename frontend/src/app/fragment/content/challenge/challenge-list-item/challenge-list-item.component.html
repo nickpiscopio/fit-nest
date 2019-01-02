@@ -1,4 +1,5 @@
 <div class="li-challenge" matRipple>
+  <button *ngIf="isAbleToEdit()" (click)="editClicked()"><mat-icon class="icon-edit">edit</mat-icon></button>
   <p>{{challenge.name}}</p>
   <div id="dates" class="right">
     <p>{{challenge.getHumanReadableStartDate()}}</p>

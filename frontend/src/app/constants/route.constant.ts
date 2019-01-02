@@ -7,6 +7,8 @@ export class Route {
   public static readonly LOGIN = 'login';
   public static readonly LOGIN_ERROR = Route.LOGIN + '?' + Route.PARAM_ERROR + '=true';
   public static readonly CHALLENGE = 'challenge';
+  public static readonly PARAM_CHALLENGE_ID = 'id';
+  public static readonly CHALLENGE_USER_EDIT = Route.CHALLENGE + '/:' + Route.PARAM_CHALLENGE_ID;
   public static readonly SETTINGS = 'settings';
 
   // API Routes.

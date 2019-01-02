@@ -42,6 +42,7 @@ import { AuthService } from './services/google/auth.service';
 import { AuthGuard } from './services/google/auth.util';
 import { ChallengeListItemComponent } from './fragment/content/challenge/challenge-list-item/challenge-list-item.component';
 import { AutocompleteChipsComponent } from './module/autocomplete-chips/autocomplete-chips.component';
+import { ChallengeUserEditComponent } from './fragment/content/challenge-user-edit/challenge-user-edit.component';
 
 const translateConfig = {
   loader: {
@@ -64,7 +65,8 @@ const translateConfig = {
     DialogComponent,
     ProgressComponent,
     ChallengeListItemComponent,
-    AutocompleteChipsComponent
+    AutocompleteChipsComponent,
+    ChallengeUserEditComponent
   ],
   imports: [
     BrowserModule,

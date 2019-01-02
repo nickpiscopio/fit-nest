@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 import { Route } from '../../../constants/route.constant';
 import { Challenge } from '../../../models/challenge.model';
 import { AuthService } from '../../../services/google/auth.service';
@@ -19,20 +20,25 @@ export class ChallengeComponent {
 
   private communication: Communication;
 
-  constructor(private _http: HttpClient, private dialogRef: MatDialog) {
+  constructor(private _http: HttpClient, private dialogRef: MatDialog, private router: Router) {
     this.communication = new Communication(_http);
 
     this.getChallenges();
   }
 
-  openDialogToAddChallenge(userIndex: number, challenge: Challenge): void {
+  openDialogToAddChallenge(challenge: Challenge): void {
     const userDialog = this.dialogRef.open(DialogEditChallengeComponent, {
-      data: { index: userIndex, challenge: challenge }
+      data: { challenge: challenge }
     });
 
     userDialog.afterClosed().subscribe(() => {
       this.getChallenges();
     });
+  }
+
+  openChallengePage(challenge: Challenge) {
+    let route = Route.CHALLENGE + Route.ROOT + challenge.id;
+    this.router.navigate([route]);
   }
 
   getChallenges(): void {

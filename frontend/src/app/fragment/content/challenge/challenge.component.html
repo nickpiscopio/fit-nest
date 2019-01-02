@@ -9,7 +9,7 @@
     <div *ngIf="isAllowedToAddChallenge()" class="d-flex justify-content-end">
       <button mat-raised-button
               color="primary"
-              (click)="openDialogToAddChallenge(null, null)"><mat-icon>add</mat-icon>{{'CHALLENGE.ADD' | translate}}</button>
+              (click)="openDialogToAddChallenge(null)"><mat-icon>add</mat-icon>{{'CHALLENGE.ADD' | translate}}</button>
     </div>
   </div>
 
@@ -17,7 +17,7 @@
     <div class="col">
       <mat-card>
         <div *ngFor="let challenge of activeChallenges; let i = index">
-          <app-challenge-list-item [challenge]="challenge" (click)="openDialogToAddChallenge(i, challenge)"></app-challenge-list-item>
+          <app-challenge-list-item [challenge]="challenge" (edit)="openDialogToAddChallenge($event)" (click)="openChallengePage(challenge)"></app-challenge-list-item>
         </div>
       </mat-card>
     </div>
@@ -31,8 +31,8 @@
     <div class="row">
       <div class="col">
         <mat-card>
-          <div *ngFor="let challenge of inactiveChallenges; let i = index">
-            <app-challenge-list-item [challenge]="challenge" (click)="openDialogToAddChallenge(i, challenge)"></app-challenge-list-item>
+          <div *ngFor="let challenge of inactiveChallenges">
+            <app-challenge-list-item [challenge]="challenge" (edit)="openDialogToAddChallenge($event)" (click)="openChallengePage(challenge)"></app-challenge-list-item>
           </div>
         </mat-card>
       </div>

@@ -16,7 +16,6 @@ import { Log } from '../../../../util/log.util';
 export class DialogEditChallengeComponent {
   challengeForm;
 
-  challengeIndex: number;
   challenge: Challenge;
   tempChallenge: Challenge;
 
@@ -35,7 +34,7 @@ export class DialogEditChallengeComponent {
     this.communication = new Communication(_http);
 
     this.addFormValidation();
-    this.setChallenge(data.index, data.challenge);
+    this.setChallenge(data.challenge);
   }
 
   addFormValidation(): void {
@@ -104,8 +103,7 @@ export class DialogEditChallengeComponent {
     this.challenge = this.tempChallenge;
   }
 
-  setChallenge(index: number, challenge: Challenge): void {
-    this.challengeIndex = index;
+  setChallenge(challenge: Challenge): void {
     this.challenge = challenge;
 
     if (!this.hasChallenge()) {
@@ -121,7 +119,7 @@ export class DialogEditChallengeComponent {
   }
 
   closeDialog(): void {
-    this.dialogRef.close({ index: this.challengeIndex, challenge: this.challenge });
+    this.dialogRef.close({ challenge: this.challenge });
   }
 
   getDialogTitleKey(): string {
