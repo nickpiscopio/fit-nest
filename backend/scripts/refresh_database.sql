@@ -16,3 +16,16 @@ CREATE TABLE challenge (id SERIAL NOT NULL,
                         date_start INT NOT NULL,
                         date_end INT NOT NULL,
                         activities STRING[] NOT NULL);
+
+CREATE TABLE activities_performed (id SERIAL NOT NULL,
+                                   date INT NOT NULL,
+                                   user_name VARCHAR NOT NULL,
+                                   activity VARCHAR NOT NULL,
+                                   challenge_id VARCHAR NOT NULL,
+                                   earned_points INT NOT NULL);
+
+CREATE TABLE social (id SERIAL NOT NULL,
+                     user_email VARCHAR NOT NULL,
+                     partner_email VARCHAR NOT NULL,
+                     challenge_id VARCHAR NOT NULL,
+                     activities_performed_id VARCHAR NOT NULL);

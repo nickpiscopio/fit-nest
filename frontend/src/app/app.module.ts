@@ -35,6 +35,7 @@ import { AuthorizationTableComponent } from './fragment/content/settings/authori
 import { DialogEditUserComponent } from './fragment/content/settings/dialog-edit-user/dialog-edit-user.component';
 import { ChallengeComponent } from './fragment/content/challenge/challenge.component';
 import { DialogEditChallengeComponent } from './fragment/content/challenge/dialog-edit-challenge/dialog-edit-challenge.component';
+import { DialogEditPerformedActivityComponent } from './fragment/content/challenge-user-edit/dialog-edit-performed-activity/dialog-edit-performed-activity.component';
 import { LoginComponent } from './fragment/content/login/login.component';
 import { DialogComponent } from './module/dialog/dialog.component';
 import { ProgressComponent } from './module/progress/progress.component';
@@ -62,6 +63,7 @@ const translateConfig = {
     ChallengeComponent,
     LoginComponent,
     DialogEditChallengeComponent,
+    DialogEditPerformedActivityComponent,
     DialogComponent,
     ProgressComponent,
     ChallengeListItemComponent,
@@ -93,6 +95,7 @@ const translateConfig = {
   ],
   entryComponents: [
     DialogEditChallengeComponent,
+    DialogEditPerformedActivityComponent,
     DialogEditUserComponent,
     DialogComponent
   ],

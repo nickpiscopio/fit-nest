@@ -1,4 +1,4 @@
-import { UserDatabaseColumns } from '../constants/authorization-columns.constant';
+import { UserDatabaseColumns } from '../constants/database-columns/authorization-columns.constant';
 import { Encrypt } from '../util/encrypt.util';
 
 export class User {

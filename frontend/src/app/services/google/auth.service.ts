@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Encrypt } from '../../util/encrypt.util';
 import { Log } from '../../util/log.util';
 import { AppGlobals } from './oauth2.global';
 
@@ -13,7 +14,7 @@ export class AuthService {
   public static readonly GOOGLE_TOKEN = 'token';
   private static readonly GOOGLE_IMAGE = 'image';
   private static readonly GOOGLE_NAME = 'name';
-  private static readonly GOOGLE_EMAIL = 'email';
+  private static readonly GOOGLE_ENCRYPTED_EMAIL = 'encrypted_email';
   private static readonly GOOGLE_USER_GROUP = 'user_group';
 
   private userDetails;
@@ -27,6 +28,10 @@ export class AuthService {
 
   public static getToken(): string {
     return localStorage.getItem(AuthService.GOOGLE_TOKEN);
+  }
+
+  public static getUserEmail() {
+    return Encrypt.decode(localStorage.getItem(AuthService.GOOGLE_ENCRYPTED_EMAIL));
   }
 
   public static getUserImage() {
@@ -56,10 +61,9 @@ export class AuthService {
       auth2.attachClickHandler(loginButton, {},
         function (userDetails: any): void {
           self.userDetails = userDetails;
-          // Getting profile object
           self.profile = self.userDetails.getBasicProfile();
           self.email = self.profile.getEmail();
-          // The details are correct.
+
           callback(self.profile.getName(), self.email);
         }, function (err: any): void {
           Log.error(err);
@@ -71,7 +75,7 @@ export class AuthService {
     localStorage.setItem(AuthService.GOOGLE_TOKEN, this.userDetails.getAuthResponse().id_token);
     localStorage.setItem(AuthService.GOOGLE_IMAGE, this.profile.getImageUrl());
     localStorage.setItem(AuthService.GOOGLE_NAME, this.profile.getName());
-    localStorage.setItem(AuthService.GOOGLE_EMAIL, this.email);
+    localStorage.setItem(AuthService.GOOGLE_ENCRYPTED_EMAIL, Encrypt.encode(this.email));
     localStorage.setItem(AuthService.GOOGLE_USER_GROUP, userGroup);
 
     callback();

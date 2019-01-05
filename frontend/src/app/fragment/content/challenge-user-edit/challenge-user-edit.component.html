@@ -2,9 +2,18 @@
 
 <div class="container">
   <div id="wrapper-challenge-title" class="row">
+    <h3>{{'CHALLENGE_USER_EDIT.TITLE' | translate}}</h3>
+    <p>{{challengeId}}</p>
+  </div>
+  <div class="row">
     <div class="col align-items-baseline">
-      <h3>{{'CHALLENGE_USER_EDIT.TITLE' | translate}}</h3>
-      <p>{{id}}</p>
+      <h3>{{'PERFORMED_ACTIVITY.TITLE' | translate}}</h3>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button mat-raised-button
+              color="primary"
+              (click)="openDialogToAddPerformedActivity(null)"><mat-icon>add</mat-icon>{{'PERFORMED_ACTIVITY.ADD' | translate}}</button>
     </div>
   </div>
 </div>

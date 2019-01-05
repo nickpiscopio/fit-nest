@@ -1,4 +1,4 @@
-import { ChallengeDatabaseColumns } from '../constants/challenge-columns.constant';
+import { ChallengeDatabaseColumns } from '../constants/database-columns/challenge-columns.constant';
 import { DateUtil } from '../util/date.util';
 
 export class Challenge {

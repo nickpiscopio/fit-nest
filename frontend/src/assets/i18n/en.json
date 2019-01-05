@@ -21,11 +21,20 @@
     "NAME_REQUIRED": "A name for the challenge is required",
     "START_DATE": "Challenge start date",
     "END_DATE": "Challenge end date",
-    "SAVE_ERROR": "Error saving the challenge",
-    "ACTIVITIES": "Activities"
+    "ACTIVITIES": "Activities",
+    "SAVE_ERROR": "Error saving the challenge"
   },
   "CHALLENGE_USER_EDIT": {
     "TITLE": "Challenge"
+  },
+  "PERFORMED_ACTIVITY": {
+    "TITLE": "Performed Activities",
+    "ADD": "Add Activity",
+    "EDIT": "Edit Activity",
+    "Date": "Date",
+    "NAME_REQUIRED": "A date for the activity is required",
+    "POINTS": "Points",
+    "SAVE_ERROR": "Error saving the activity"
   },
   "SETTINGS": {
     "TITLE": "Settings",

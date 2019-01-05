@@ -1,0 +1,37 @@
+<form [formGroup]="form">
+  <div class="layout">
+    <h4>{{getDialogTitleKey() | translate}}</h4>
+    <div id="progress">
+      <app-progress [showProgress]="loading"></app-progress>
+    </div>
+  </div>
+  <p *ngIf="error" class="error transition">{{'PERFORMED_ACTIVITY.SAVE_ERROR' | translate}}</p>
+
+  <!--<mat-form-field>-->
+    <!--<input matInput placeholder="{{'CHALLENGE.NAME' | translate}}" (change)="setName($event.currentTarget.value)" [ngModel]="getName()" formControlName="name">-->
+    <!--<mat-error>{{'CHALLENGE.NAME_REQUIRED' | translate}}</mat-error>-->
+  <!--</mat-form-field>-->
+
+  <!--<mat-form-field>-->
+    <!--<input matInput [matDatepicker]="dateStart" placeholder="{{'CHALLENGE.START_DATE' | translate}}" [ngModel]="getStartDate()" (dateChange)="setStartDate($event.value)" formControlName="dateStart">-->
+    <!--<mat-datepicker-toggle matSuffix [for]="dateStart"></mat-datepicker-toggle>-->
+    <!--<mat-datepicker #dateStart></mat-datepicker>-->
+  <!--</mat-form-field>-->
+
+  <!--<mat-form-field>-->
+    <!--<input matInput [matDatepicker]="dateEnd" placeholder="{{'CHALLENGE.END_DATE' | translate}}" [ngModel]="getEndDate()" (dateChange)="setEndDate($event.value)" formControlName="dateEnd">-->
+    <!--<mat-datepicker-toggle matSuffix [for]="dateEnd"></mat-datepicker-toggle>-->
+    <!--<mat-datepicker #dateEnd></mat-datepicker>-->
+  <!--</mat-form-field>-->
+
+  <!--<app-autocomplete-chips [finalValues]="tempChallenge.activities"-->
+                          <!--[inputPlaceholderKey]="getActivityPlaceholderKey()"></app-autocomplete-chips>-->
+
+  <mat-dialog-actions class="float-right">
+    <button mat-button
+            *ngIf="hasPerformedActivity()"
+            (click)="deletePerformedActivity()">{{'DIALOG.DELETE' | translate}}</button>
+    <button mat-button
+            (click)="savePerformedActivity()">{{'DIALOG.SAVE' | translate}}</button>
+  </mat-dialog-actions>
+</form>
