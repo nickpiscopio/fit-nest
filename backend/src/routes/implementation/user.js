@@ -12,10 +12,10 @@ function getAuthorizedUsers(req, res) {
   new Database().execute(userQuery, (error, results) => {
     if (error) {
       res.statusCode = statusCodes.ERROR;
-      return res.send({message: responseMessage.getFailedMessage('Failed to retrieve users.'), error: results });
+      return res.send({ message: responseMessage.getFailedMessage('Failed to retrieve users.'), error: results });
     }
 
-    return res.send({message: responseMessage.getSuccessMessage('Successfully retrieved users.'), data: results});
+    return res.send({ message: responseMessage.getSuccessMessage('Successfully retrieved users.'), data: results});
   });
 }
 
@@ -27,10 +27,10 @@ function removeAuthorizationForUser(req, res) {
   new Database().execute(deleteUserQuery, (hasError, results) => {
     if (hasError) {
       res.statusCode = statusCodes.ERROR;
-      return res.send({message: responseMessage.getFailedMessage('Error removing authorization for user.'), error: results });
+      return res.send({ message: responseMessage.getFailedMessage('Error removing authorization for user.'), error: results });
     }
 
-    return res.send({message: responseMessage.getSuccessMessage('User authorization removed.'), error: results });
+    return res.send({ message: responseMessage.getSuccessMessage('User authorization removed.'), error: results });
   });
 }
 
@@ -53,10 +53,10 @@ function editUser(req, res) {
   new Database().execute(updateUserQuery, (hasError, results) => {
     if (hasError) {
       res.statusCode = statusCodes.ERROR;
-      return res.send({message: responseMessage.getFailedMessage('Error updating user authorization.'), error: results });
+      return res.send({ message: responseMessage.getFailedMessage('Error updating user authorization.'), error: results });
     }
 
-    return res.send({message: responseMessage.getSuccessMessage('Updated user authorization.'), error: results });
+    return res.send({ message: responseMessage.getSuccessMessage('Updated user authorization.'), error: results });
   });
 }
 
@@ -86,7 +86,6 @@ function verifyUser(req, res) {
 
 function checkUserAuthorization(email, callback) {
   const selectUserQuery = "select email, user_group from users where email='" + email + "'";
-  console.log("select: ", selectUserQuery);
   new Database().execute(selectUserQuery, (hasError, results) => {
     if (hasError) {
       return callback(null, results);
@@ -105,7 +104,7 @@ function authorizeUserImplementation(res, name, email, userGroup) {
   new Database().execute(insertUserQuery, (hasError, results) => {
     if (hasError) {
       res.statusCode = statusCodes.ERROR;
-      return res.send({message: responseMessage.getFailedMessage('Error authorizing user.'), error: results });
+      return res.send({ message: responseMessage.getFailedMessage('Error authorizing user.'), error: results });
     }
 
     return sendAuthorizedMessage(res, results);
@@ -114,11 +113,11 @@ function authorizeUserImplementation(res, name, email, userGroup) {
 
 function sendUnauthorizedMessage(res, error) {
   res.statusCode = statusCodes.ERROR_UNAUTHORIZED;
-  res.send({message: responseMessage.getFailedMessage('User is unauthorized.'), error: error });
+  res.send({ message: responseMessage.getFailedMessage('User is unauthorized.'), error: error });
 }
 
 function sendAuthorizedMessage(res, results) {
-  res.send({message: responseMessage.getSuccessMessage('User authorized.'), data: results });
+  res.send({ message: responseMessage.getSuccessMessage('User authorized.'), data: results });
 }
 
 function checkAuthorizedUserCount(callback) {
