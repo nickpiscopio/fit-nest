@@ -9,7 +9,7 @@ function getPerformedActivities(req, res) {
   let challengeId = req.query.challenge_id;
   let userEmail = req.query.user_email;
 
-  const performedActivityQuery = "select * from challenge where challenge_id='" + challengeId + "' and user_email='" + userEmail + "' order by date_end desc";
+  const performedActivityQuery = "select * from performed_activity where challenge_id='" + challengeId + "' and user_email='" + userEmail + "' order by date_end desc";
   new Database().execute(performedActivityQuery, (error, results) => {
     if (error) {
       res.statusCode = statusCodes.ERROR;
@@ -30,9 +30,14 @@ function deletePerformedActivity(req, res) {
       return res.send({ message: responseMessage.getFailedMessage('Error deleting performed activity.'), error: results });
     }
 
-    // TODO: ADD TO THE SOCIAL TABLE TOO
+    social.removePartners(performedActivityId, (hasError) => {
+      if (hasError) {
+        res.statusCode = statusCodes.ERROR;
+        return res.send({ message: responseMessage.getFailedMessage('Error removing partners for a performed activity.'), error: results });
+      }
 
-    return res.send({ message: responseMessage.getSuccessMessage('Performed activity removed.'), data: results });
+      return res.send({ message: responseMessage.getSuccessMessage('Performed activity and partners removed.'), data: results });
+    });
   });
 }
 

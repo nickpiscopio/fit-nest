@@ -4,6 +4,20 @@ const statusCodes =  require('../../constant/status-codes');
 const responseMessage = require('../../util/response-message');
 const Database = require('../../database/database');
 
+function getPartners(req, res) {
+  let performedActivityId = req.query.performed_activity_id;
+
+  const partnersQuery = "select * from social where performed_activity_id='" + performedActivityId + "';";
+  new Database().execute(partnersQuery, (error, results) => {
+    if (error) {
+      res.statusCode = statusCodes.ERROR;
+      return res.send({ message: responseMessage.getFailedMessage('Failed to retrieve partners.'), error: results });
+    }
+
+    return res.send({ message: responseMessage.getSuccessMessage('Successfully retrieved partners.'), data: results});
+  });
+}
+
 function editPartners(userEmail, partners, challengeId, performedActivityId, callback) {
   removePartners(performedActivityId, (hasError) => {
     if (hasError) {
@@ -48,6 +62,8 @@ function isFinishedAddingPartners(index, totalPartners) {
 }
 
 module.exports = {
+  getPartners: getPartners,
   editPartners: editPartners,
-  addPartners: addPartners
+  addPartners: addPartners,
+  removePartners: removePartners
 };
